@@ -1,0 +1,208 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #121212, #1e1e2f);
+  color: #fff;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+.app-container {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 16px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  background: linear-gradient(90deg, #f9d423, #ff4e50);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.header p {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+/* Camera Wrapper */
+.camera-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  background: #000;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 2px solid #f9d423;
+  box-shadow: 0 6px 15px rgba(249, 212, 35, 0.2);
+}
+
+#video, #overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#overlay {
+  pointer-events: none;
+}
+
+/* Counter Overlay */
+.counter-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 12px;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 10;
+  backdrop-filter: blur(4px);
+}
+
+.count {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #f9d423;
+}
+
+.status {
+  font-size: 0.9rem;
+  color: #66ff66;
+}
+
+/* Buttons */
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn.primary {
+  background: #f9d423;
+  color: #121212;
+}
+
+.btn.primary:hover {
+  background: #e6c21e;
+  transform: translateY(-2px);
+}
+
+.btn.primary:active {
+  transform: translateY(0);
+}
+
+.btn.secondary {
+  background: #3a3a52;
+  color: #fff;
+}
+
+.btn.secondary:hover {
+  background: #4a4a68;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 14px;
+  border-radius: 10px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.label {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.value {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #f9d423;
+}
+
+.highlight {
+  color: #ff4e50;
+}
+
+/* Milestone Message */
+.milestone-message {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #f9d423;
+  min-height: 32px;
+  opacity: 0;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.milestone-message.show {
+  opacity: 1;
+  transform: translateY(-4px);
+}
+
+/* Animations */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.pop {
+  animation: pulse 0.4s ease-in-out;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .camera-wrapper {
+    height: 280px;
+  }
+
+  .counter-badge .count {
+    font-size: 1.8rem;
+  }
+
+  .header h1 {
+    font-size: 1.8rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
